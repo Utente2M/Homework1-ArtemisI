@@ -1,3 +1,5 @@
+package JavaCode;
+
 public class CreateStrings {
 
     public String creaStringa(String nome, String codice, String reparto) {
