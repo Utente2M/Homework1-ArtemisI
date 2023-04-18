@@ -13,7 +13,7 @@ public class Simple_Test {
 
         CreateStrings createStrings = new CreateStrings();
 
-        Assertions.assertEquals("PNN123456LTT", createStrings.creaStringa("panna", "123456","ltt"));
+        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "111111","000"));
     }
 
     @Test
@@ -22,7 +22,7 @@ public class Simple_Test {
 
         CreateStrings createStrings = new CreateStrings();
 
-        Assertions.assertEquals("PCC123456LTT", createStrings.creaStringa("paaaaacaaccaa", "123456","ltt"));
+        Assertions.assertEquals("PCC222222000", createStrings.creaStringa("paaaaacaaccaa", "222222","000"));
     }
 
     @Test
@@ -31,6 +31,6 @@ public class Simple_Test {
 
         CreateStrings createStrings = new CreateStrings();
 
-        Assertions.assertEquals("PAC123456LTT", createStrings.creaStringa("paaaaacaaaaaaaa", "123456","ltt"));
+        Assertions.assertEquals("PAA333333000", createStrings.creaStringa("paaaaacaaaaaaaa", "333333","000"));
     }
 }
