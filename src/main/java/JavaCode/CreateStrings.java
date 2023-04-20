@@ -8,7 +8,8 @@ public class CreateStrings {
         for (int i = 0; i < nome.length() && countConsonanti < 3; i++) {
             char lettera = nome.charAt(i);
             if (Character.isLetter(lettera)) {
-                if (!isVocale(lettera)) {
+                char c = Character.toLowerCase(lettera);
+                if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
                     result.append(lettera);
                     countConsonanti++;
                 }
@@ -30,10 +31,4 @@ public class CreateStrings {
 
         return result.toString().toUpperCase();
     }
-
-    private boolean isVocale(char c) {
-        c = Character.toLowerCase(c);
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
-    }
-
 }
