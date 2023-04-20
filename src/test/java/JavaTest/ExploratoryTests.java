@@ -37,9 +37,6 @@ public class ExploratoryTests {
     @DisplayName("Create String With More Than Six Code Numbers")
     void createStringsWithMoreThanSixCodeNumbers() {
 
-        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","000"));
+        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","00000"));
     }
-
-    //For the unit numbers, it allows only exactly 3 numbers if not so, throws an exception
-
 }
