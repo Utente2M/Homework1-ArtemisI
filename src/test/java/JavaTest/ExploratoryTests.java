@@ -37,6 +37,6 @@ public class ExploratoryTests {
     @DisplayName("Create String With More Than Six Code Numbers")
     void createStringsWithMoreThanSixCodeNumbers() {
 
-        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","00000"));
+        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","000"));
     }
 }

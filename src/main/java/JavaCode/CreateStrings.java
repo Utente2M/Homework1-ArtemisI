@@ -29,6 +29,10 @@ public class CreateStrings {
         String numReparto = String.format("%03d", Integer.parseInt(reparto));
         result.append(numReparto);
 
+        if (reparto.length() != 3) {
+            throw new IllegalArgumentException("Il reparto deve avere esattamente 3 cifre");
+        }
+
         return result.toString().toUpperCase();
     }
 }
