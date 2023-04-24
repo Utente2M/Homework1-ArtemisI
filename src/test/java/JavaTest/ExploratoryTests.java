@@ -1,10 +1,7 @@
 package JavaTest;
 
 import JavaCode.CreateStrings;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class ExploratoryTests {
 
@@ -38,5 +35,13 @@ public class ExploratoryTests {
     void createStringsWithMoreThanSixCodeNumbers() {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","000"));
+    }
+
+    //Takes oly the first six numbers anyway but with less than six numbers, throws an exception
+    @Test
+    @DisplayName("New Test for complete Branch Coverage")
+    void exampleToFinishBranchCoverage() {
+
+        Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
     }
 }
