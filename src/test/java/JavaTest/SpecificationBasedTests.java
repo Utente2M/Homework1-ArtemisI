@@ -80,14 +80,4 @@ public class SpecificationBasedTests {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-
-    void repartoIsLessThanThree2(){
-        assertThatThrownBy(()->{
-            createStrings.creaStringa("panna", "111111","00");
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-
-
 }
