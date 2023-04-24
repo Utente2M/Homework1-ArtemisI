@@ -80,6 +80,4 @@ public class SpecificationBasedTests {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-
-
 }
