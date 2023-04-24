@@ -1,16 +1,10 @@
 package JavaTest;
 
 import JavaCode.CreateStrings;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
+
 
 public class SpecificationBasedTests {
 
@@ -73,7 +67,6 @@ public class SpecificationBasedTests {
     }
 
     @Test
-
     void repartoIsLessThanThree(){
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "111111","00");
