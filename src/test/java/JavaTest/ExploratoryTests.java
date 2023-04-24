@@ -37,7 +37,7 @@ public class ExploratoryTests {
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","000"));
     }
 
-    //Takes oly the first six numbers anyway but with less than six numbers, throws an exception
+    //Test aggiuntivo per completare tutti i branch possibili ( a e i o u )
     @Test
     @DisplayName("New Test for complete Branch Coverage")
     void exampleToFinishBranchCoverage() {
