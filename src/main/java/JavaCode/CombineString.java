@@ -41,7 +41,7 @@ public class CombineString {
             }
         }
 
-        if (result.length() != s1.length() + s2.length() + s3.length() + 4 + 50) {
+        if (result.length() != s1.length() + s2.length() + s3.length() + 2 + 50) {
             throw new RuntimeException("La lunghezza della stringa risultante non è corretta.");
         }
 

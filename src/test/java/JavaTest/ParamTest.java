@@ -83,13 +83,6 @@ public class ParamTest {
         }).isInstanceOf(NumberFormatException.class);
     }
 
-
-
-    // Metodo per generare i valori di test per il tuo caso
-    static Stream<String> invalidRepartoValues() {
-        return Stream.of("", "1", "12");
-    }
-
     @ParameterizedTest
     @MethodSource("invalidRepartoValues")
     void repartoIsLessThanThree(String reparto) {
@@ -98,44 +91,64 @@ public class ParamTest {
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
-
-    class TestCreateStringa {
-
-        @ParameterizedTest
-        @CsvSource({
-                ", 111111, 000", // Test con nome nullo
-                " , 111111, 000", // Test con nome vuoto
-                "\t, 111111, 000", // Test con nome contenente solo tabulazioni
-                "\n, 111111, 000", // Test con nome contenente solo ritorni a capo
-                "John, 111111, 000", // Test con nome valido
-                "Jane, , 000", // Test con codice nullo
-                "Alice, 111111, ", // Test con descrizione vuota
-                "Bob, 111111, 000", // Test con tutti i parametri validi
-                "Pasta, 010206 , 111", // Test realistico 1
-                "Riso, 213654 , 222", // Test realistico 2
-                "Latte, 345998 , 330" // Test realistico 3
-        })
-        void testCreateStringa(String nome, String codice, String descrizione) {
-            try {
-                createStrings.creaStringa(nome, codice, descrizione);
-                // Verifica che l'eccezione sia sollevata
-                fail("StringIndexOutOfBoundsException not thrown");
-            } catch (StringIndexOutOfBoundsException e) {
-                // L'eccezione è stata sollevata correttamente, non fare nulla
-            } catch (NullPointerException e) {
-                // L'eccezione di tipo NullPointerException è stata sollevata, verifica il messaggio
-                if (e.getMessage() != null && e.getMessage().equals("NullPointerException occurred")) {
-                    // Il messaggio è corretto, il test è superato
-                } else {
-                    fail("Unexpected exception: " + e.getClass().getName());
-                }
-            } catch (Exception e) {
-                // Verifica che sia stata sollevata un'eccezione diversa da StringIndexOutOfBoundsException e NullPointerException
-                fail("Unexpected exception: " + e.getClass().getName());
-            }
-        }
+    // Metodo utilizzato in " repartoIsLessThanThree " per generare i valori di test per il tuo caso
+    static Stream<String> invalidRepartoValues() {
+        return Stream.of("", "1", "12");
     }
 
 
 
+    @ParameterizedTest
+    @CsvSource({
+            ", 111111, 000", // Test con nome nullo
+            " , 111111, 000", // Test con nome vuoto
+            "\t, 111111, 000", // Test con nome contenente solo tabulazioni
+            "\n, 111111, 000", // Test con nome contenente solo ritorni a capo
+            "John, 111111, 000", // Test con nome valido
+            "Jane, , 000", // Test con codice nullo
+            "Alice, 111111, ", // Test con descrizione vuota
+            "Bob, 111111, 000", // Test con tutti i parametri validi
+            "Pasta, 010206 , 111", // Test realistico 1
+            "Riso, 213654 , 222", // Test realistico 2
+            "Latte, 345998 , 330" // Test realistico 3
+    })
+    void testCreateStringa(String nome, String codice, String reparto) {
+        try {
+            createStrings.creaStringa(nome, codice, reparto);
+
+            // controlla nome
+            if (nome == null || nome.trim().isEmpty()) {
+                fail("Expected IllegalArgumentException, but no exception was thrown.");
+            }
+
+            // controlla codice
+            if (codice == null || codice.trim().isEmpty()) {
+                fail("Expected IllegalArgumentException, but no exception was thrown.");
+            }
+
+            // controlla reparto
+            if (reparto == null || reparto.trim().isEmpty()) {
+                fail("Expected NumberFormatException, but no exception was thrown.");
+            }
+
+        } catch (NumberFormatException e) {
+            // Eccezione attesa quando il parametro reparto non può essere convertito in un numero
+            if (reparto == null || !reparto.matches("\\d+")) {
+                fail("Unexpected NumberFormatException.");
+            }
+        } catch (IllegalArgumentException e) {
+            // Eccezione attesa quando il parametro nome o codice è nullo o vuoto
+            if (nome != null && !nome.trim().isEmpty()) {
+                fail("Unexpected IllegalArgumentException.");
+            }
+            if (codice != null && !codice.trim().isEmpty()) {
+                fail("Unexpected IllegalArgumentException.");
+            }
+        }
+    }
+
 }
+
+
+
+
