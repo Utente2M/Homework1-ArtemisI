@@ -100,6 +100,7 @@ public class ParamTest {
 
     @ParameterizedTest
     @CsvSource({
+            ",,," , //Test con tutti i campi nulli
             ", 111111, 000", // Test con nome nullo
             " , 111111, 000", // Test con nome vuoto
             "\t, 111111, 000", // Test con nome contenente solo tabulazioni
@@ -115,34 +116,31 @@ public class ParamTest {
     void testCreateStringa(String nome, String codice, String reparto) {
         try {
             createStrings.creaStringa(nome, codice, reparto);
-
+            /*
+            Tramite la chiamata a fail, forziamo il fallimento del test, passando immediatamente la chiamata
+            al blocco catch.
+            All'interno del blocco catch, andiamo a controllare se effettivamente l'exeption attesa sia
+            valida ( test superato ) oppure no ( test fallito )
+             */
             // controlla nome
-            if (nome == null || nome.trim().isEmpty()) {
-                fail("Expected IllegalArgumentException, but no exception was thrown.");
+            if (nome == null || nome.isBlank()) {
+                fail("Expected NullPointerException, but no exception was thrown.");
             }
-
             // controlla codice
-            if (codice == null || codice.trim().isEmpty()) {
-                fail("Expected IllegalArgumentException, but no exception was thrown.");
+            if (codice == null || codice.isBlank()) {
+                fail("Expected NullPointerException, but no exception was thrown.");
             }
-
             // controlla reparto
-            if (reparto == null || reparto.trim().isEmpty()) {
+            if (reparto == null || reparto.isBlank()) {
                 fail("Expected NumberFormatException, but no exception was thrown.");
             }
-
         } catch (NumberFormatException e) {
-            // Eccezione attesa quando il parametro reparto non può essere convertito in un numero
-            if (reparto == null || !reparto.matches("\\d+")) {
+            if (reparto!= null){
                 fail("Unexpected NumberFormatException.");
             }
-        } catch (IllegalArgumentException e) {
-            // Eccezione attesa quando il parametro nome o codice è nullo o vuoto
-            if (nome != null && !nome.trim().isEmpty()) {
-                fail("Unexpected IllegalArgumentException.");
-            }
-            if (codice != null && !codice.trim().isEmpty()) {
-                fail("Unexpected IllegalArgumentException.");
+        } catch (NullPointerException e){
+            if (nome != null && codice !=null  ) {
+                fail("Unexpected NullPointerException.");
             }
         }
     }
