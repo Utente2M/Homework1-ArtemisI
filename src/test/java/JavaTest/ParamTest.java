@@ -100,7 +100,8 @@ public class ParamTest {
 
     @ParameterizedTest
     @CsvSource({
-            ",,," , //Test con tutti i campi nulli
+            ",," , //Test con tutti i campi nulli
+            "null,," , //Test con tutti i campi nulli
             ", 111111, 000", // Test con nome nullo
             " , 111111, 000", // Test con nome vuoto
             "\t, 111111, 000", // Test con nome contenente solo tabulazioni

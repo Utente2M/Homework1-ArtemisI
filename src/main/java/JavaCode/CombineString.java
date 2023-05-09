@@ -3,7 +3,7 @@ package JavaCode;
 public class CombineString {
 
     /**
-     * Questo metodo prende in input tre stringhe e restituisce una nuova stringa formata dalle tre
+     * Questo metodo prende in ingresso tre stringhe e restituisce una nuova stringa formata dalle tre
      * in ordine inverso, con l'aggiunta di un carattere speciale "#" tra ogni coppia di stringhe.
      *
      * Pre-condizioni:
@@ -16,10 +16,18 @@ public class CombineString {
      *   più due caratteri "#" per ciascuna coppia di stringhe.
      */
     public String combineStrings(String s1, String s2, String s3) {
-        if (s1 == null || s2 == null || s3 == null) {
-            throw new IllegalArgumentException("Tutte e tre le stringhe devono essere non nulle.");
+
+        if (s1 == null || s1.equalsIgnoreCase("null") || !s1.matches("[a-zA-Z0-9]+")) {
+            s1 = "";
         }
 
+        if (s2 == null || s2.equalsIgnoreCase("null") || !s2.matches("[a-zA-Z0-9]+")) {
+            s2 = "";
+        }
+
+        if (s3 == null || s3.equalsIgnoreCase("null") || !s3.matches("[a-zA-Z0-9]+")) {
+            s3 = "";
+        }
         StringBuilder result = new StringBuilder();
         result.append(s3);
         result.append("#");

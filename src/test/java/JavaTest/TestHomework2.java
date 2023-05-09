@@ -4,6 +4,7 @@ import JavaCode.CombineString;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,14 +20,25 @@ public class TestHomework2 {
 
 
     @ParameterizedTest
-    @CsvSource({
-            "hello, world, Java, Java#world#helloAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 53",
-            "foo, bar, baz, baz#bar#fooAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 48",
-            "a, b, c, c#b#aAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 43",
-            "123, 456, 789, 789#456#123AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 53"
+    //@NullAndEmptySource
+    @CsvSource( {
+            "hello, world, Java, Java#world#helloAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 66",
+            "foo, bar, baz, baz#bar#fooAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 61",
+            "a, b, c, c#b#aAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 55",
+            "123, 456, 789, 789#456#123AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 61",
+            ",,, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
+            "ITPS,\\n,\t, ##ITPSAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 56 ",
+            "\t,\t,\t,##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
+            "\\n,\\n,\\n,##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 " ,
+            "null,null,null, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
+            "null,,, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
+            ",null,, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
+            ",,null, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 "
+
+
     })
     void testCombineStrings(String s1, String s2, String s3, String expected, int expectedLength) {
-       // CombineString combiner = new CombineString();
+
         String actual = myStringTest.combineStrings(s1, s2, s3);
         assertEquals(expected, actual);
         assertEquals(expectedLength, actual.length());
