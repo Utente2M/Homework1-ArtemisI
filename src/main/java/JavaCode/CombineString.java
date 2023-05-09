@@ -17,15 +17,19 @@ public class CombineString {
      */
     public String combineStrings(String s1, String s2, String s3) {
 
-        if (s1 == null || s1.equalsIgnoreCase("null") || !s1.matches("[a-zA-Z0-9]+")) {
+        if (s1 == null || s1.equalsIgnoreCase("null") || !s1.matches("[a-zA-Z0-9@ €!#$%&'*+\\-./:^_`{|}~]+")
+        ) {
             s1 = "";
         }
 
-        if (s2 == null || s2.equalsIgnoreCase("null") || !s2.matches("[a-zA-Z0-9]+")) {
+        if (s2 == null || s2.equalsIgnoreCase("null") || !s2.matches("[a-zA-Z0-9@ €!#$%&'*+\\-./:^_`{|}~]+")
+        ) {
             s2 = "";
         }
 
-        if (s3 == null || s3.equalsIgnoreCase("null") || !s3.matches("[a-zA-Z0-9]+")) {
+        if (s3 == null || s3.equalsIgnoreCase("null") || !s3.matches("[a-zA-Z0-9@ €!#$%&'*+\\-./:^_`{|}~]+")
+        )
+        {
             s3 = "";
         }
         StringBuilder result = new StringBuilder();
