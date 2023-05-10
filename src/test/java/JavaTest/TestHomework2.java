@@ -37,9 +37,6 @@ public class TestHomework2 {
             ",null,, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
             ",,null, ##AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE , 52 ",
             "12345678901234567890123456789012345678901234567890, abcdefghijklmnopqrstuvwxyz, Hello World!, Hello World!#abcdefghijklmnopqrstuvwxyz#12345678901234567890123456789012345678901234567890AAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE, 140"
-
-
-
     })
     void testCombineStrings(String s1, String s2, String s3, String expected, int expectedLength) {
 

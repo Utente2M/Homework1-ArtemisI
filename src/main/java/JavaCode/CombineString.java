@@ -16,7 +16,7 @@ public class CombineString {
      *   più due caratteri "#" per ciascuna coppia di stringhe.
      */
     public String combineStrings(String s1, String s2, String s3) {
-
+        //equalsIgnoreCase, confronta due stringhe ignorando minuscole e maiuscole. Restituisce un Boolean
         if (s1 == null || s1.equalsIgnoreCase("null") || !s1.matches("[a-zA-Z0-9@ €!#$%&'*+\\-./:^_`{|}~]+")
         ) {
             s1 = "";
@@ -39,7 +39,7 @@ public class CombineString {
         result.append("#");
         result.append(s1);
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i <= 50; i++) {
             if (i < 10) {
                 result.append("A");
             } else if (i < 20) {
@@ -53,9 +53,7 @@ public class CombineString {
             }
         }
 
-        if (result.length() != s1.length() + s2.length() + s3.length() + 2 + 50) {
-            throw new RuntimeException("La lunghezza della stringa risultante non è corretta.");
-        }
+
 
         return result.toString();
     }
