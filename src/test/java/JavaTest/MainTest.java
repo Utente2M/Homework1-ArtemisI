@@ -15,7 +15,8 @@ public class MainTest {
     void main_should_print_expected_output() {
         //line.separator è il corrispettivo di un \n. è stato utilizzato perchè assertEqual non li riconosce come uguali
         String expectedOutput = "MRCABCD12001" + System.getProperty("line.separator") +
-                "001#ABCD12#MarcoAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE" + System.getProperty("line.separator");
+                "001#ABCD12#MarcoAAAAAAAAAABBBBBBBBBBCCCCCCCCCCDDDDDDDDDDEEEEEEEEEE" + System.getProperty("line.separator")
+                + "true" + System.getProperty("line.separator");
 
 
 

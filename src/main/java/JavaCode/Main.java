@@ -17,5 +17,13 @@ public class Main {
         result = combineString.combineStrings(nome , codice , reparto);
         System.out.println(result);
 
+        //Homework 3
+        Palindrome palimString = new Palindrome();
+        String tryString = "anna";
+        Boolean resultBool = palimString.isPalindrome(tryString);
+        System.out.println(resultBool);
+
+
+
     }
 }

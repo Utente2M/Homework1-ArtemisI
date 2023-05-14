@@ -8,6 +8,8 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+ext.junitJupiterVersion = '5.9.2'
+ext.jqwikVersion = '1.7.3'
 
 dependencies {
     implementation 'org.assertj:assertj-core:3.24.2'
@@ -23,13 +25,26 @@ dependencies {
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-params:5.9.2')
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-    testImplementation 'net.jqwik:jqwik:1.4.3'
-    implementation 'com.github.famodoo:jquik:1.0.1'
+    // aggregate jqwik dependency
+    testImplementation "net.jqwik:jqwik:${jqwikVersion}"
+
 
 
 
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines 'jqwik'
+
+        // Or include several Junit engines if you use them
+        // includeEngines 'jqwik', 'junit-jupiter', 'junit-vintage'
+
+        // includeTags 'fast', 'medium'
+        // excludeTags 'slow'
+    }
+
+    include '**/*Properties.class'
+    include '**/*Test.class'
+    include '**/*Tests.class'
 }

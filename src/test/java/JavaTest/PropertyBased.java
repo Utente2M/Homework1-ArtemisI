@@ -1,21 +1,20 @@
 package JavaTest;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
+
 import net.jqwik.api.*;
-import java.util.stream.*;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PropertyBased {
 
     @Property
     public void isPalindrome_shouldReturnTrueForPalindromes(@ForAll("palindromes") String s) {
-        assertTrue(StringUtils.isPalindrome(s));
+        assertTrue(isPalindrome(s));
     }
 
     @Property
     public void isPalindrome_shouldReturnFalseForNonPalindromes(@ForAll("nonPalindromes") String s) {
-        assertFalse(StringUtils.isPalindrome(s));
+        assertFalse(isPalindrome(s));
     }
 
     @Provide
