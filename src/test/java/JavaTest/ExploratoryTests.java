@@ -44,4 +44,7 @@ public class ExploratoryTests {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
     }
+
+
+
 }

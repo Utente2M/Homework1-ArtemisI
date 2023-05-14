@@ -3,7 +3,6 @@ package JavaCode;
 public class Main {
     public static void main(String[] args) {
 
-
         String nome = "Marco";
         String codice = "ABCD12";
         String reparto = "001";
