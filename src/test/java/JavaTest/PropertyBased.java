@@ -24,7 +24,7 @@ public class PropertyBased {
                 .ofMinLength(1)
                 .filter(s -> isPalindrome(s));
     }
-
+//
     @Provide
     public Arbitrary<String> nonPalindromes() {
         return Arbitraries.strings()
