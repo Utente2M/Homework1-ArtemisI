@@ -9,11 +9,12 @@ public class Palindrome {
             return false;
         }
 
+        String sLower = s.toLowerCase();
         int left = 0;
-        int right = s.length() - 1 ;
+        int right = sLower.length() - 1 ;
 
         while(left < right){
-            if(s.charAt(left) != s.charAt(right)){
+            if(sLower.charAt(left) != sLower.charAt(right)){
                 return false;
             }
 
@@ -22,6 +23,7 @@ public class Palindrome {
         }
 
         return true;
+
     }
 
 }

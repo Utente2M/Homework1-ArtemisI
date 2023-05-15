@@ -19,7 +19,7 @@ public class Main {
 
         //Homework 3
         Palindrome palimString = new Palindrome();
-        String tryString = "anna";
+        String tryString = "Anna";
         Boolean resultBool = palimString.isPalindrome(tryString);
         System.out.println(resultBool);
 
