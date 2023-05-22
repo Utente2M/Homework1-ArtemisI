@@ -5,6 +5,7 @@ import net.jqwik.api.*;
 import net.jqwik.api.statistics.Histogram;
 import net.jqwik.api.statistics.StatisticsReport;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -121,4 +122,17 @@ public class PropertyBased {
                 '|', '}', '~');
         return Arbitraries.of(punctuationChars.toArray(new Character[0]));
     }
+
+
+
+    //EXTRA TEST 4 100% COVERAGE
+    @Test
+    void emptryIsNotPalindrome () {
+        assertFalse(isPalindrome("") ,"La stringa vuota non è palindroma" );
+    }
+    @Test
+    void nullIsNotPalindrome () {
+        assertFalse(isPalindrome(null), "La stringa vuota non è palindroma");
+    }
+
 }
