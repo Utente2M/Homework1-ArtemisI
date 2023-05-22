@@ -2,7 +2,7 @@ package JavaCode;
 
 public class Palindrome {
 
-    public boolean isPalindrome(String s){
+    public static boolean isPalindrome(String s){
 
         //A null or a single character string is by definition a palindrome
         if(s == null || s.isEmpty()){

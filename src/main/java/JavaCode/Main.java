@@ -18,9 +18,9 @@ public class Main {
         System.out.println(result);
 
         //Homework 3
-        Palindrome palimString = new Palindrome();
+        Palindrome palinString = new Palindrome();
         String tryString = "Anna";
-        Boolean resultBool = palimString.isPalindrome(tryString);
+        Boolean resultBool = palinString.isPalindrome(tryString);
         System.out.println(resultBool);
 
 

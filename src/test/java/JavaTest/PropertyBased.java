@@ -1,39 +1,69 @@
 package JavaTest;
 
+import JavaCode.CreateStrings;
+import JavaCode.Palindrome;
 import net.jqwik.api.*;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static JavaCode.Palindrome.isPalindrome;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PropertyBased {
 
-    @Property
-    public void isPalindrome_shouldReturnTrueForPalindromes(@ForAll("palindromes") String s) {
-        assertTrue(isPalindrome(s));
+    Palindrome palindrome;
+    @BeforeEach
+    void setUp(){
+
+         palindrome = new Palindrome();
     }
 
     @Property
-    public void isPalindrome_shouldReturnFalseForNonPalindromes(@ForAll("nonPalindromes") String s) {
-        assertFalse(isPalindrome(s));
+    void testPalindromeProperty(@ForAll("palindromeStrings") String palindrome) {
+        assertTrue(Palindrome.isPalindrome(palindrome));
+    }
+
+    @Property
+    void testLengthyProperty(@ForAll("strings") String s) {
+        assertEquals(s.length() > 0, Palindrome.isPalindrome(s));
+    }
+
+    @Property
+    void testCaseInsensitivityProperty(@ForAll("strings") String s) {
+        String lowerCase = s.toLowerCase();
+        assertEquals(Palindrome.isPalindrome(s), Palindrome.isPalindrome(lowerCase));
+    }
+
+    @Property
+    void testWhitespacesProperty(@ForAll("stringsWithWhitespaces") String s) {
+        String withoutWhitespaces = s.replaceAll("\\s+", "");
+        assertEquals(Palindrome.isPalindrome(s), Palindrome.isPalindrome(withoutWhitespaces));
+    }
+
+    @Property
+    void testPunctuationProperty(@ForAll("stringsWithPunctuation") String s) {
+        String withoutPunctuation = s.replaceAll("\\p{Punct}", "");
+        assertEquals(Palindrome.isPalindrome(s), Palindrome.isPalindrome(withoutPunctuation));
     }
 
     @Provide
-    public Arbitrary<String> palindromes() {
-        return Arbitraries.strings()
-                .withCharRange('a', 'z')
-                .ofMinLength(1)
-                .filter(s -> isPalindrome(s));
+    Arbitrary<String> strings() {
+        return Arbitraries.strings().alpha().ofMinLength(1);
     }
 
     @Provide
-    public Arbitrary<String> nonPalindromes() {
-        return Arbitraries.strings()
-                .withCharRange('a', 'z')
-                .ofMinLength(2)
-                .filter(s -> !isPalindrome(s));
+    Arbitrary<String> palindromeStrings() {
+        return strings().filter(Palindrome::isPalindrome);
     }
 
-    private boolean isPalindrome(String s) {
-        return s.equals(new StringBuilder(s).reverse().toString());
+    @Provide
+    Arbitrary<String> stringsWithWhitespaces() {
+        return strings().map(s -> s + " " + s);
     }
+
+    @Provide
+    Arbitrary<String> stringsWithPunctuation() {
+        return strings().map(s -> s + "! " + s);
+    }
+
+
 }

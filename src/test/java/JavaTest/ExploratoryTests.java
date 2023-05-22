@@ -1,5 +1,4 @@
 package JavaTest;
-
 import JavaCode.CreateStrings;
 import org.junit.jupiter.api.*;
 
@@ -28,7 +27,6 @@ public class ExploratoryTests {
 
     }
 
-
     //Takes oly the first six numbers anyway but with less than six numbers, throws an exception
     @Test
     @DisplayName("Create String With More Than Six Code Numbers")
@@ -44,7 +42,4 @@ public class ExploratoryTests {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
     }
-
-
-
 }
