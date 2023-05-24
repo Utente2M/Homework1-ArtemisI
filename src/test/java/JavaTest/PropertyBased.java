@@ -3,6 +3,7 @@ package JavaTest;
 import JavaCode.Palindrome;
 import net.jqwik.api.*;
 import net.jqwik.api.statistics.Histogram;
+import net.jqwik.api.statistics.Statistics;
 import net.jqwik.api.statistics.StatisticsReport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,19 +26,21 @@ public class PropertyBased {
 
 
     //Proprietà Palindroma: La stringa, se letta al contrario, rimane invariata.
-    @Property
-    @Report(Reporting.GENERATED)
+    @Property(generation = GenerationMode.RANDOMIZED)
     @StatisticsReport(format = Histogram.class)
-    void palindromeProperty(@ForAll("randomStrings") String s) {
+    //@Report(Reporting.GENERATED)
+    void palindromeProperty(@ForAll("randomStrings") String s ) {
         String reversed = new StringBuilder(s).reverse().toString();
         String concatenated = s + reversed;
         assertTrue(isPalindrome(concatenated), "La stringa '" + concatenated + "' dovrebbe essere palindroma");
-        //Statistics.collect(randomStrings());
+        Statistics.label("Is Palindrome " ).collect(concatenated.length());
+        Statistics.label(concatenated).collect(concatenated.length());
+
     }
 
+
+
     @Property
-    @Report(Reporting.GENERATED)
-    @StatisticsReport(format = Histogram.class)
     void isNotPalindromeProperty(@ForAll("randomStrings") String s, @ForAll("randomChars") char extra_char) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
         Assume.that(!isPalindrome(s));  // Assicura che la stringa iniziale non sia già palindroma
@@ -45,7 +48,7 @@ public class PropertyBased {
         int length = s.length();
         int randomIndex;
         do {
-            randomIndex = Arbitraries.integers().between(1, length - 2).sample();  // Genera un indice casuale tra 1 e length - 2
+            randomIndex = Arbitraries.integers().between(0, length - 1).sample();  // Genera un indice casuale tra 1 e length - 2
         } while (randomIndex == length / 2);  // Esclude il centro della stringa
 
         String modified = s.substring(0, randomIndex) + extra_char + s.substring(randomIndex);  // Inserisce la lettera nella posizione randomica
@@ -64,8 +67,7 @@ public class PropertyBased {
 
     //Proprietà Spazi vuoti: Nei palindromi gli spazi vuoti non sono considerati.
     @Property
-    @Report(Reporting.GENERATED)
-    @StatisticsReport(format = Histogram.class)
+
     void emptySpacePalindromeProperty(@ForAll("randomStrings") String s) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
 
@@ -85,8 +87,7 @@ public class PropertyBased {
 
     //Proprietà Punteggiatura: Nei palindromi la punteggiatura non viene considerata.
     @Property
-    @Report(Reporting.GENERATED)
-    @StatisticsReport(format = Histogram.class)
+
     void puntIsNotPalindromeProperty(@ForAll("randomStrings") String s , @ForAll("punctuation") char extra_char) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
 

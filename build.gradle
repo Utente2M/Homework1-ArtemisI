@@ -7,37 +7,17 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+
+            maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
-ext.junitJupiterVersion = '5.9.2'
-ext.jqwikVersion = '1.7.3'
-
-dependencies {
-    implementation 'org.assertj:assertj-core:3.24.2'
-    implementation 'net.javacrumbs.json-unit:json-unit-assertj:2.36.1'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2'
-    implementation 'org.xmlunit:xmlunit-assertj:2.9.0'
-    implementation 'io.github.symonk:Property-Assistant:1.1'
-    implementation 'com.github.ansell.property-util:property-util:0.4'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testImplementation('org.junit.jupiter:junit-jupiter-params:5.9.2')
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-params:5.9.2')
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
-    // aggregate jqwik dependency
-    testImplementation "net.jqwik:jqwik:${jqwikVersion}"
 
 
-
-
-}
 
 test {
     useJUnitPlatform {
-        includeEngines 'jqwik'
+        includeEngines 'jqwik' , 'junit-jupiter'
 
-        // Or include several Junit engines if you use them
+        // Or include several Junit engines if you use  them
         // includeEngines 'jqwik', 'junit-jupiter', 'junit-vintage'
 
         // includeTags 'fast', 'medium'
@@ -48,3 +28,29 @@ test {
     include '**/*Test.class'
     include '**/*Tests.class'
 }
+
+
+dependencies {
+    implementation 'org.assertj:assertj-core:3.24.2'
+    implementation 'net.javacrumbs.json-unit:json-unit-assertj:2.36.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2'
+    implementation 'org.xmlunit:xmlunit-assertj:2.9.0'
+    implementation 'io.github.symonk:Property-Assistant:1.1'
+    implementation 'com.github.ansell.property-util:property-util:0.4'
+    implementation 'net.jqwik:jqwik-testing:1.7.2'
+    implementation 'net.jqwik:jqwik-engine:1.7.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+    testImplementation('org.junit.jupiter:junit-jupiter-params:5.9.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-params:5.9.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+
+    // aggregate jqwik dependency
+    testImplementation "net.jqwik:jqwik:1.7.2"
+
+}
+
+
+
