@@ -26,48 +26,64 @@ public class PropertyBased {
 
 
     //Proprietà Palindroma: La stringa, se letta al contrario, rimane invariata.
-    @Property(generation = GenerationMode.RANDOMIZED)
+    @Property
     @StatisticsReport(format = Histogram.class)
     //@Report(Reporting.GENERATED)
     void palindromeProperty(@ForAll("randomStrings") String s ) {
         String reversed = new StringBuilder(s).reverse().toString();
         String concatenated = s + reversed;
         assertTrue(isPalindrome(concatenated), "La stringa '" + concatenated + "' dovrebbe essere palindroma");
-        Statistics.label("Is Palindrome " ).collect(concatenated.length());
-        Statistics.label(concatenated).collect(concatenated.length());
+        Statistics.label("\nIs Palindrome " ).collect(concatenated.length());
+        Statistics.label("\n"+concatenated).collect(concatenated.length());
 
     }
 
 
 
     @Property
+    @StatisticsReport(format = Histogram.class)
     void isNotPalindromeProperty(@ForAll("randomStrings") String s, @ForAll("randomChars") char extra_char) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
         Assume.that(!isPalindrome(s));  // Assicura che la stringa iniziale non sia già palindroma
 
-        int length = s.length();
-        int randomIndex;
-        do {
-            randomIndex = Arbitraries.integers().between(0, length - 1).sample();  // Genera un indice casuale tra 1 e length - 2
-        } while (randomIndex == length / 2);  // Esclude il centro della stringa
+        String reversed = new StringBuilder(s).reverse().toString();
 
-        String modified = s.substring(0, randomIndex) + extra_char + s.substring(randomIndex);  // Inserisce la lettera nella posizione randomica
+        String try_palindrome = s + reversed;
 
-        assertFalse(isPalindrome(modified), "La stringa '" + modified + "' non è palindroma");
+        if (Palindrome.isPalindrome(try_palindrome)){
+            int length = s.length();
+            int randomIndex;
+            do {
+                randomIndex = Arbitraries.integers().between(0, length - 1).sample();  // Genera un indice casuale tra 1 e length - 2
+            } while (randomIndex == length / 2);  // Esclude il centro della stringa
+
+            String modified = try_palindrome.substring(0, randomIndex) + extra_char + try_palindrome.substring(randomIndex);  // Inserisce la lettera nella posizione randomica
+            if (Palindrome.isPalindrome(modified)){
+                modified = modified + "zzzzz";
+            }
+            assertFalse(isPalindrome(modified), "La stringa '" + modified + "' non è palindroma, the char is:" + extra_char );
+            Statistics.label("\nIs not Palindrome " ).collect(modified.length());
+            Statistics.label("\n"+modified + "the char is:" + extra_char).collect(modified.length());
+
+        }
+
+
     }
 
     //Proprietà Case-Insensivity: I palindromi non sono sensibili a maiuscole e minuscole.
     @Property
+    @StatisticsReport(format = Histogram.class)
     void caseInsensitivityProperty(@ForAll("randomStrings") String s) {
         String reversed = new StringBuilder(s).reverse().toString();
-        String concatenated = s + reversed;
-        String uppercaseConcatenated = concatenated.toUpperCase();
-        assertTrue(Palindrome.isPalindrome(uppercaseConcatenated), "La stringa '" + uppercaseConcatenated + "' dovrebbe essere palindroma");
+        String concatenated = s + reversed.toUpperCase();
+        assertTrue(Palindrome.isPalindrome(concatenated), "La stringa '" + concatenated + "' dovrebbe essere palindroma");
+        Statistics.label("\nInsensitivity Property " ).collect(concatenated.length());
+        Statistics.label("\n"+concatenated).collect(concatenated.length());
     }
 
     //Proprietà Spazi vuoti: Nei palindromi gli spazi vuoti non sono considerati.
     @Property
-
+    @StatisticsReport(format = Histogram.class)
     void emptySpacePalindromeProperty(@ForAll("randomStrings") String s) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
 
@@ -83,17 +99,22 @@ public class PropertyBased {
         String modified = concatenated.substring(0, randomIndex) + " " + concatenated.substring(randomIndex);  // Inserisce la lettera nella posizione randomica
 
         assertTrue(isPalindrome(modified), "La stringa '" + modified + "' non è palindroma");
+        Statistics.label("\nEmpty Space " ).collect(modified.length());
+        Statistics.label("\n"+modified).collect(modified.length());
     }
 
     //Proprietà Punteggiatura: Nei palindromi la punteggiatura non viene considerata.
     @Property
-
-    void puntIsNotPalindromeProperty(@ForAll("randomStrings") String s , @ForAll("punctuation") char extra_char) {
+    @StatisticsReport(format = Histogram.class)
+    void puntIsPalindromeProperty(@ForAll("randomStrings") String s , @ForAll("punctuation") char extra_char) {
         Assume.that(s.length() > 2);  // Assicura che la stringa abbia almeno 3 caratteri
 
 
         int length = s.length();
         int randomIndex;
+        for (int k = 0 ; k >= 3 ; ++k ){
+
+        }
         do {
             randomIndex = Arbitraries.integers().between(1, length - 2).sample();  // Genera un indice casuale tra 1 e length - 2
         } while (randomIndex == length / 2);  // Esclude il centro della stringa
@@ -103,6 +124,8 @@ public class PropertyBased {
         String modified = concatenated.substring(0, randomIndex) + extra_char + concatenated.substring(randomIndex);  // Inserisce la lettera nella posizione randomica
 
         assertTrue(isPalindrome(modified), "La stringa '" + modified + "' non è palindroma");
+        Statistics.label("\npunctuation Is Not Palindrome" ).collect(modified.length());
+        Statistics.label("\n"+modified).collect(modified.length());
     }
 
 
