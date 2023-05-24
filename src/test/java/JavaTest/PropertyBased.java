@@ -112,9 +112,7 @@ public class PropertyBased {
 
         int length = s.length();
         int randomIndex;
-        for (int k = 0 ; k >= 3 ; ++k ){
 
-        }
         do {
             randomIndex = Arbitraries.integers().between(1, length - 2).sample();  // Genera un indice casuale tra 1 e length - 2
         } while (randomIndex == length / 2);  // Esclude il centro della stringa
