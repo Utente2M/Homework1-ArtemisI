@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -112,8 +113,11 @@ public class ParamTest {
             "Bob, 111111, 000", // Test con tutti i parametri validi
             "Pasta, 010206 , 111", // Test realistico 1
             "Riso, 213654 , 222", // Test realistico 2
-            "Latte, 345998 , 330" // Test realistico 3
+            "Latte, 345998 , 330",  // Test realistico 3
+            "0000 , siamo6 , AAA " //EXTRA TEST
+
     })
+
     void testCreateStringa(String nome, String codice, String reparto) {
         try {
             createStrings.creaStringa(nome, codice, reparto);
@@ -124,20 +128,20 @@ public class ParamTest {
             valida ( test superato ) oppure no ( test fallito )
              */
             // controlla nome
-            if (nome == null || nome.isBlank()) {
+            if (nome == null || nome.isBlank() || Pattern.matches(".*\\d+.*", nome)) {
                 fail("Expected NullPointerException, but no exception was thrown.");
             }
             // controlla codice
-            if (codice == null || codice.isBlank()) {
+            if (codice == null || codice.isBlank() || Pattern.matches(".*[a-zA-Z].*", codice)) {
                 fail("Expected NullPointerException, but no exception was thrown.");
             }
             // controlla reparto
-            if (reparto == null || reparto.isBlank()) {
+            if (reparto == null || reparto.isBlank() || Pattern.matches(".*[a-zA-Z].*", reparto)) {
                 fail("Expected NumberFormatException, but no exception was thrown.");
             }
         } catch (NumberFormatException e) {
             if (reparto!= null){
-                fail("Unexpected NumberFormatException.");
+                fail("Unexpected NumberFormatException miaooooooooooooooo.");
             }
         } catch (NullPointerException e){
             if (nome != null && codice !=null  ) {

@@ -47,9 +47,7 @@ public class PropertyBased {
         Assume.that(!isPalindrome(s));  // Assicura che la stringa iniziale non sia già palindroma
 
         String reversed = new StringBuilder(s).reverse().toString();
-
         String try_palindrome = s + reversed;
-
         if (Palindrome.isPalindrome(try_palindrome)){
             int length = s.length();
             int randomIndex;

@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         String nome = "Marco";
-        String codice = "ABCD12";
+        String codice = "123456";
         String reparto = "001";
 
         // Homework #1
