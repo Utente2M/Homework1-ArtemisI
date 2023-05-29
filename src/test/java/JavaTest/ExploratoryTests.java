@@ -15,14 +15,14 @@ public class ExploratoryTests {
     }
 
     @Test
-    @DisplayName("T1 - H1 - Create String With Three Consonants")
+    @DisplayName("E1 - H1 - Create String With Three Consonants")
     void createStringsWithThreeConsonants() {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "111111","000"));
     }
 
     @Test
-    @DisplayName("T2 - H1 - Create String With Less Than Three Consonants")
+    @DisplayName("E2 - H1 - Create String With Less Than Three Consonants")
     void createStringsWithLessThanThreeConsonants() {
 
         Assertions.assertEquals("PAN111111000", createStrings.creaStringa("pane", "111111","000"));
@@ -31,7 +31,7 @@ public class ExploratoryTests {
 
     //Takes oly the first six numbers anyway but with less than six numbers, throws an exception
     @Test
-    @DisplayName("T3 - H1 - Create String With More Than Six Code Numbers")
+    @DisplayName("E3 - H1 - Create String With More Than Six Code Numbers")
     void createStringsWithMoreThanSixCodeNumbers() {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("panna", "1111110","000"));
@@ -39,7 +39,7 @@ public class ExploratoryTests {
 
     //Test aggiuntivo per completare tutti i branch possibili ( a e i o u )
     @Test
-    @DisplayName("T11 - H1 - New Test for complete Branch Coverage")
+    @DisplayName("ST1 - H1 - New Test for complete Branch Coverage")
     void exampleToFinishBranchCoverage() {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
@@ -48,7 +48,7 @@ public class ExploratoryTests {
     //Creativity Test
     //EXTRA TEST
     @Test
-    @DisplayName("T12 - H1 - nome Extra Creativity")
+    @DisplayName("T20 - H1 - nome Extra Creativity")
     void nomeExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -60,7 +60,7 @@ public class ExploratoryTests {
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
-    @DisplayName("T13 - H1 - nome Extra Creativity")
+    @DisplayName("T21 - H1 - nome Extra Creativity")
     void codiceExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -73,7 +73,7 @@ public class ExploratoryTests {
     }
 
     @Test
-    @DisplayName("T14 - H1 - nome Extra Creativity")
+    @DisplayName("T22 - H1 - nome Extra Creativity")
     void repartoExtraCreativity(){
 
         assertThatThrownBy(()->{

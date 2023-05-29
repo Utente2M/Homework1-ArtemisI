@@ -101,7 +101,7 @@ public class ParamTest {
 
 
     @ParameterizedTest
-    @DisplayName("T10 - H1 - Homework#1 Parameterized Test")
+    @DisplayName("T7 / T19 - H1 - Homework#1 Parameterized Test")
     @CsvSource({
             ",," , //Test con tutti i campi nulli
             "null,," , //Test con tutti i campi nulli
@@ -116,8 +116,6 @@ public class ParamTest {
             "Pasta, 010206 , 111", // Test realistico 1
             "Riso, 213654 , 222", // Test realistico 2
             "Latte, 345998 , 330" // Test realistico 3
-
-
     })
 
     void testCreateStringa(String nome, String codice, String reparto) {

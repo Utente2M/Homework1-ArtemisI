@@ -18,7 +18,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T4 - H1 - nome is NULL or EMPTY")
+    @DisplayName("T1 - H1 - nome is NULL or EMPTY")
     void nomeIsNullOrEmpty(){
 
         assertThatThrownBy(()->{
@@ -31,7 +31,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T5 - H1 - codice is NULL or EMPTY")
+    @DisplayName("T2 - H1 - codice is NULL or EMPTY")
     void codiceIsNullOrEmpty(){
 
         assertThatThrownBy(()->{
@@ -44,7 +44,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T6 - H1 - reparto is NULL or EMPTY")
+    @DisplayName("T3 - H1 - reparto is NULL or EMPTY")
     void repartoIsNullOrEmpty(){
 
         assertThatThrownBy(()->{
@@ -57,7 +57,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T7 - H1 - nome is less than three")
+    @DisplayName("T4 - H1 - nome is less than three")
     void nomeIsLessThanThree(){
         assertThatThrownBy(()->{
             createStrings.creaStringa("pa", "111111","000");
@@ -65,7 +65,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T8 - H1 - codice is less than six")
+    @DisplayName("T5 - H1 - codice is less than six")
     void codiceIsLessThanSix(){
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "11111","000");
@@ -73,7 +73,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
-    @DisplayName("T9 - H1 - reparto is less than six")
+    @DisplayName("T6 - H1 - reparto is less than six")
     void repartoIsLessThanThree(){
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "111111","00");
