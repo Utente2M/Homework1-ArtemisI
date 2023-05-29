@@ -2,6 +2,8 @@ package JavaTest;
 import JavaCode.CreateStrings;
 import org.junit.jupiter.api.*;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
+
 public class ExploratoryTests {
 
     private CreateStrings createStrings;
@@ -43,7 +45,41 @@ public class ExploratoryTests {
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
     }
 
+    //Creativity Test
+    //EXTRA TEST
+    @Test
+    void nomeExtraCreativity(){
 
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("ab", "123456","123");
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
 
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("123456", "123456","123");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void codiceExtraCreativity(){
+
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("panna", "abc","123");
+        }).isInstanceOf(StringIndexOutOfBoundsException.class);
+
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("panna", "abcdef","123");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void repartoExtraCreativity(){
+
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("panna", "123456","1");
+        }).isInstanceOf(NumberFormatException.class);
+
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("panna", "123456","abc");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
 
 }

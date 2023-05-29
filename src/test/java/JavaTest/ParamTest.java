@@ -113,8 +113,8 @@ public class ParamTest {
             "Bob, 111111, 000", // Test con tutti i parametri validi
             "Pasta, 010206 , 111", // Test realistico 1
             "Riso, 213654 , 222", // Test realistico 2
-            "Latte, 345998 , 330",  // Test realistico 3
-            "0000 , siamo6 , AAA " //EXTRA TEST
+            "Latte, 345998 , 330" // Test realistico 3
+
 
     })
 
@@ -141,7 +141,7 @@ public class ParamTest {
             }
         } catch (NumberFormatException e) {
             if (reparto!= null){
-                fail("Unexpected NumberFormatException miaooooooooooooooo.");
+                fail("Unexpected NumberFormatException.");
             }
         } catch (NullPointerException e){
             if (nome != null && codice !=null  ) {

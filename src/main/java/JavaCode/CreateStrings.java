@@ -31,17 +31,20 @@ public class CreateStrings {
         String numReparto = String.format("%03d", Integer.parseInt(reparto));
         result.append(numReparto);
 
-        if (reparto.length() != 3) {
-            throw new IllegalArgumentException("Il reparto deve avere esattamente 3 cifre");
-        }
+        //check nome
         if (Pattern.matches(".*\\d+.*", nome)) {
-            throw new NullPointerException("Nome non può contenere numeri");
+            throw new IllegalArgumentException("Nome non può contenere numeri");
         }
+        //check codice
         if (Pattern.matches(".*[a-zA-Z].*", codice)) {
-            throw new NullPointerException("Codice non può contenere caratteri");
+            throw new IllegalArgumentException("Codice non può contenere caratteri");
         }
+        //check reparto
         if (Pattern.matches(".*[a-zA-Z].*", reparto)) {
-            throw new NumberFormatException("Reparto non può contenere caratteri");
+            throw new IllegalArgumentException("Reparto non può contenere caratteri");
+        }
+        if (reparto.length() != 3) {
+            throw new NumberFormatException("Il reparto deve avere esattamente 3 cifre");
         }
 
 
