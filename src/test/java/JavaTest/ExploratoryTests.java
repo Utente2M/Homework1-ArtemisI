@@ -48,7 +48,7 @@ public class ExploratoryTests {
     //Creativity Test
     //EXTRA TEST
     @Test
-    @DisplayName("T20 - H1 - nome Extra Creativity")
+    @DisplayName("T21 - H1 - nome Extra Creativity")
     void nomeExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -60,7 +60,7 @@ public class ExploratoryTests {
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
-    @DisplayName("T21 - H1 - nome Extra Creativity")
+    @DisplayName("T22 - H1 - nome Extra Creativity")
     void codiceExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -73,12 +73,13 @@ public class ExploratoryTests {
     }
 
     @Test
-    @DisplayName("T22 - H1 - nome Extra Creativity")
+    @DisplayName("T23 - H1 - nome Extra Creativity")
     void repartoExtraCreativity(){
 
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "123456","1");
         }).isInstanceOf(NumberFormatException.class);
+
 
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "123456","abc");
