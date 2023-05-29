@@ -2,6 +2,7 @@ package JavaTest;
 
 import JavaCode.CreateStrings;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -100,6 +101,7 @@ public class ParamTest {
 
 
     @ParameterizedTest
+    @DisplayName("T10 - H1 - Homework#1 Parameterized Test")
     @CsvSource({
             ",," , //Test con tutti i campi nulli
             "null,," , //Test con tutti i campi nulli

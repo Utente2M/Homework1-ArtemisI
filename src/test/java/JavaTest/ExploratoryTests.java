@@ -39,7 +39,7 @@ public class ExploratoryTests {
 
     //Test aggiuntivo per completare tutti i branch possibili ( a e i o u )
     @Test
-    @DisplayName("New Test for complete Branch Coverage")
+    @DisplayName("T11 - H1 - New Test for complete Branch Coverage")
     void exampleToFinishBranchCoverage() {
 
         Assertions.assertEquals("PNN111111000", createStrings.creaStringa("paeiounna", "1111110","000"));
@@ -48,6 +48,7 @@ public class ExploratoryTests {
     //Creativity Test
     //EXTRA TEST
     @Test
+    @DisplayName("T12 - H1 - nome Extra Creativity")
     void nomeExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -59,6 +60,7 @@ public class ExploratoryTests {
         }).isInstanceOf(IllegalArgumentException.class);
     }
     @Test
+    @DisplayName("T13 - H1 - nome Extra Creativity")
     void codiceExtraCreativity(){
 
         assertThatThrownBy(()->{
@@ -71,6 +73,7 @@ public class ExploratoryTests {
     }
 
     @Test
+    @DisplayName("T14 - H1 - nome Extra Creativity")
     void repartoExtraCreativity(){
 
         assertThatThrownBy(()->{
