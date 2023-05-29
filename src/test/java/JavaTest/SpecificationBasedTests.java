@@ -2,6 +2,7 @@ package JavaTest;
 
 import JavaCode.CreateStrings;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
@@ -17,6 +18,7 @@ public class SpecificationBasedTests {
     }
 
     @Test
+    @DisplayName("T? - H1 - nome is NULL or EMPTY")
     void nomeIsNullOrEmpty(){
 
         assertThatThrownBy(()->{
