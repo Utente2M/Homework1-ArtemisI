@@ -1,6 +1,7 @@
 package JavaTest;
 
 import JavaCode.CreateStrings;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -63,6 +64,13 @@ public class SpecificationBasedTest {
             createStrings.creaStringa("pa", "111111","000");
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
+    @Test
+    @DisplayName("T? - H1 - nome is more than three")
+    void nomeIsMoreOrEqualThanThree(){
+        Assertions.assertEquals("PAN111111123" ,
+                createStrings.creaStringa("pan", "111111","123"));
+    }
+
 
     @Test
     @DisplayName("T5 - H1 - codice is less than six")
@@ -71,13 +79,34 @@ public class SpecificationBasedTest {
             createStrings.creaStringa("panna", "11111","000");
         }).isInstanceOf(StringIndexOutOfBoundsException.class);
     }
+    @Test
+    @DisplayName("T5 - H1 - codice is less than six")
+    void codiceIsMoreThanSix(){
+        Assertions.assertEquals("PNN123456123" ,
+                createStrings.creaStringa("panna", "123456","123"));
+    }
 
     @Test
-    @DisplayName("T6 - H1 - reparto is less than six")
+    @DisplayName("T6 - H1 - reparto is less than three")
     void repartoIsLessThanThree(){
         assertThatThrownBy(()->{
             createStrings.creaStringa("panna", "111111","00");
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    @DisplayName("T7 - H1 - reparto is more than three")
+    void repartoIsMoreThanThree(){
+        assertThatThrownBy(()->{
+            createStrings.creaStringa("panna", "111111","1234");
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("T7 - H1 - reparto is equal three")
+    void repartoIsEqualThree(){
+        Assertions.assertEquals("PNN111111123" ,
+                createStrings.creaStringa("panna", "111111","123"));
+
     }
 
 }
