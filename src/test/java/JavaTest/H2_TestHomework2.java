@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class TestHomework2 {
+public class H2_TestHomework2 {
 
     private CombineString myStringTest;
 

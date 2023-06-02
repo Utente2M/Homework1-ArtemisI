@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-public class ExploratoryTest {
+public class H1_ExploratoryTest {
 
     private CreateStrings createStrings;
 

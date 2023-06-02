@@ -16,7 +16,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.fail;
 
 
-public class ParamTest {
+public class H1_ParamTest {
 
     private CreateStrings createStrings;
     @BeforeEach
